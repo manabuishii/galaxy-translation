@@ -41,12 +41,18 @@ potfile.write(u'\n')
 potfile.write(u'msgid "' + description + u'"\n')
 potfile.write(u'msgstr ""\n')
 
-def write_as_po_file_format(text):
+def write_as_po_file_format_single_line(text):
     if len(text) == 0:
         return
     potfile.write(u'\n')
     potfile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
     potfile.write(u'msgstr ""\n')
+
+def write_as_po_file_format(text):
+    lines = text.split('\n')
+    for i in range(len(lines)):
+        if len(lines[i]) != 0:
+            write_as_po_file_format_single_line(lines[i])
 
 def extract_item_attribute(attrib, key):
     if key in attrib:
@@ -73,6 +79,7 @@ for i in range(len(params)):
         attrib = param.attrib
         extract_item_attribute(attrib, 'title')
         extract_item_attribute(attrib, 'label')
+        extract_item_attribute(attrib, 'help')
     except IndexError:
         pass
     except AttributeError:
