@@ -77,8 +77,5 @@ for i in range(len(params)):
 
 
 # option
-#options = root.xpath('//option')
-print('---option')
 extract_item_text('option')
-print('---help')
 extract_item_text('help')
