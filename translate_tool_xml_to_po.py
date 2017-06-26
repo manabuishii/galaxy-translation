@@ -68,7 +68,6 @@ for i in range(len(params)):
         attrib = param.attrib
         extract_item_attribute(attrib, 'title')
         extract_item_attribute(attrib, 'label')
-        extract_item_attribute(attrib, 'help')
     except IndexError:
         pass
     except AttributeError:
