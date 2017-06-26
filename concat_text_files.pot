@@ -1,4 +1,8 @@
-"Tool-id: concat_text_files\n"
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8
+""Content-Transfer-Encoding: 8bit
+""Tool-id: concat_text_files\n"
 "Tool-name: Concat text files\n"
 "Tool-version: 1.0.0\n"
 
@@ -6,9 +10,6 @@ msgid "Concatenates any text based files you select from your history"
 msgstr ""
 
 msgid "Input text files(s)"
-msgstr ""
-
-msgid "One or more FASTA files"
 msgstr ""
 
 msgid "

@@ -19,29 +19,34 @@ xml_file = sys.argv[1]
 
 # open po file
 filepattern = re.compile(".xml")
-pofilename = filepattern.sub("",  xml_file) + ".po"
-pofile = open(pofilename, 'w')
-
+potfilename = filepattern.sub("",  xml_file) + ".pot"
+potfile = open(potfilename, 'w')
+# msgid , msgstr and po file headers
+potfile.write(u'msgid ""\n')
+potfile.write(u'msgstr ""\n')
+potfile.write(u'"Content-Type: text/plain; charset=utf-8\n"')
+potfile.write(u'"Content-Transfer-Encoding: 8bit\n"')
 
 # parse XML
 tree = objectify.parse(xml_file, parser = etree.XMLParser())
 root = tree.getroot()
-# tool
-pofile.write(u'"Tool-id: ' + root.get('id') + u"\\n\"\n")
-pofile.write(u'"Tool-name: ' + root.get('name') + u"\\n\"\n")
-pofile.write(u'"Tool-version: ' + root.get('version') + u"\\n\"\n")
+#
+# tool headers
+potfile.write(u'"Tool-id: ' + root.get('id') + u"\\n\"\n")
+potfile.write(u'"Tool-name: ' + root.get('name') + u"\\n\"\n")
+potfile.write(u'"Tool-version: ' + root.get('version') + u"\\n\"\n")
 # description
 description = root.xpath("description")[0].text
-pofile.write(u'\n')
-pofile.write(u'msgid "' + description + u'"\n')
-pofile.write(u'msgstr ""\n')
+potfile.write(u'\n')
+potfile.write(u'msgid "' + description + u'"\n')
+potfile.write(u'msgstr ""\n')
 
 def write_as_po_file_format(text):
     if len(text) == 0:
         return
-    pofile.write(u'\n')
-    pofile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
-    pofile.write(u'msgstr ""\n')
+    potfile.write(u'\n')
+    potfile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
+    potfile.write(u'msgstr ""\n')
 
 def extract_item_attribute(attrib, key):
     if key in attrib:
