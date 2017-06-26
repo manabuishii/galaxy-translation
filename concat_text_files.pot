@@ -1,0 +1,30 @@
+"Tool-id: concat_text_files\n"
+"Tool-name: Concat text files\n"
+"Tool-version: 1.0.0\n"
+
+msgid "Concatenates any text based files you select from your history"
+msgstr "Agrège tous les fichiers textuels présent dans votre historique et que vous avez selectionné"
+
+msgid "Input text files(s)"
+msgstr "Fichier textuel à traiter"
+
+msgid "One or more FASTA files"
+msgstr "Un ou plusieurs fichiers FASTA"
+
+msgid "
+.. class:: infomark
+Just concatenates all the files selected from the given list
+------
+.. class:: infomark
+**Tool Author**
+Mando Rodriguez"
+msgstr ".. class:: infomark
+
+Concatene tout les fichiers issues e la liste fournie
+------
+
+.. class:: infomark
+
+**Tool Author**
+
+Mando Rodriguez"
