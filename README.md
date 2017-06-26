@@ -1,2 +1,8 @@
 # galaxy-translation
-Tool for 
+Tool for Galaxy tool's xml translation
+
+# Require
+
+```
+pip install lxml
+```
