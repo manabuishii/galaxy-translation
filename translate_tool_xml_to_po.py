@@ -1,15 +1,18 @@
 #!/usr/bin/python
 # -*- coding: utf_8 -*-
 #
-# dev version of tool xml schema is
+# dev version of tool xml schema is 
 #  https://github.com/galaxyproject/galaxy/blob/dev/lib/galaxy/tools/xsd/galaxy.xsd
 
 import os
 from lxml import etree, objectify
 import sys
+reload(sys)
 import codecs
 import re
 
+# for utf-8
+sys.setdefaultencoding("utf-8")
 
 # XML file name
 xml_file = sys.argv[1]
@@ -19,44 +22,63 @@ filepattern = re.compile(".xml")
 pofilename = filepattern.sub("",  xml_file) + ".po"
 pofile = open(pofilename, 'w')
 
+
 # parse XML
 tree = objectify.parse(xml_file, parser = etree.XMLParser())
 root = tree.getroot()
 # tool
-pofile.write('"Tool-id: ' + root.get('id') + "\\n\"\n")
-pofile.write('"Tool-name: ' + root.get('name') + "\\n\"\n")
-pofile.write('"Tool-version: ' + root.get('version') + "\\n\"\n")
+pofile.write(u'"Tool-id: ' + root.get('id') + u"\\n\"\n")
+pofile.write(u'"Tool-name: ' + root.get('name') + u"\\n\"\n")
+pofile.write(u'"Tool-version: ' + root.get('version') + u"\\n\"\n")
 # description
 description = root.xpath("description")[0].text
-pofile.write('\n')
-pofile.write('msgid "' + description + '"\n')
-pofile.write('msgstr ""\n')
+pofile.write(u'\n')
+pofile.write(u'msgid "' + description + u'"\n')
+pofile.write(u'msgstr ""\n')
 
+def write_as_po_file_format(text):
+    if len(text) == 0:
+        return
+    pofile.write(u'\n')
+    pofile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
+    pofile.write(u'msgstr ""\n')
+
+def extract_item_attribute(attrib, key):
+    if key in attrib:
+        text = attrib[key]
+        write_as_po_file_format(text)
+
+
+def extract_item_text(nodename):
+    items = root.xpath('//' + nodename)
+    for i in range(len(items)):
+        try:
+            item = items[i]
+            write_as_po_file_format(item.text)
+        except IndexError:
+            pass
+        except AttributeError:
+            pass
+
+# param
 params = root.xpath('//param')
-
 for i in range(len(params)):
     try:
         param = params[i]
-        #print("--param")
-        #print(param)
         attrib = param.attrib
-        if 'title' in attrib:
-            text = attrib['title']
-            pofile.write('\n')
-            pofile.write('msgid "' + text + '"\n')
-            pofile.write('msgstr ""\n')
-        if 'label' in attrib:
-            text = attrib['label']
-            pofile.write('\n')
-            pofile.write('msgid "' + text + '"\n')
-            pofile.write('msgstr ""\n')
-        if 'help' in attrib:
-            text = attrib['help']
-            pofile.write('\n')
-            pofile.write('msgid "' + text + '"\n')
-            pofile.write('msgstr ""\n')
-
+        extract_item_attribute(attrib, 'title')
+        extract_item_attribute(attrib, 'label')
+        extract_item_attribute(attrib, 'help')
     except IndexError:
         pass
     except AttributeError:
         pass
+
+
+
+# option
+#options = root.xpath('//option')
+print('---option')
+extract_item_text('option')
+print('---help')
+extract_item_text('help')
