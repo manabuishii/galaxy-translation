@@ -37,6 +37,14 @@ pip install lxml
 
 ## What is a "msgid" and "msgstr" ?
 
+## Dynamically change the language ?
+
+No.
+
+Cureently we can not change the language dynamically.
+
+We want to that , in the future we support it.
+
 ## What happens if a tag is empty on a po file?
 
 If `msgstr` is empty, it is used msgid.
