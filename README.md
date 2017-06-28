@@ -33,6 +33,10 @@ pip install lxml
 
 # FAQ
 
+## What is a "pot", "po" and "mo" ?
+
+## What is a "msgid" and "msgstr" ?
+
 ## What happens if a tag is empty on a po file?
 
 If `msgstr` is empty, it is used msgid.
