@@ -30,3 +30,16 @@ The upload.py file come from galaxy/lib/galaxy/webapps/tool_shed/controllers/ an
 ```
 pip install lxml
 ```
+
+# FAQ
+
+## What happens if a tag is empty on a po file?
+
+If `msgstr` is empty, it is used msgid.
+
+```
+msgid "Input text files(s)"
+msgstr ""
+```
+
+In this case, "Input text files(s)" is displayed.
