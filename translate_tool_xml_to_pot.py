@@ -17,9 +17,13 @@ sys.setdefaultencoding("utf-8")
 # XML file name
 xml_file = sys.argv[1]
 
+# pot export dir (with / in the end of the dir path)
+pot_dir = sys.argv[2]
+
 # open po file
 filepattern = re.compile(".xml")
 potfilename = filepattern.sub("",  xml_file) + ".pot"
+potfilname = pot_dir+potfilename
 potfile = open(potfilename, 'w')
 # msgid , msgstr and po file headers
 potfile.write(u'msgid ""\n')
