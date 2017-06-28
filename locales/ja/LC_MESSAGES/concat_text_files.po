@@ -1,0 +1,19 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Tool-id: concat_text_files\n"
+"Tool-name: Concat text files\n"
+"Tool-version: 1.0.0\n"
+
+msgid "Concatenates any text based files you select from your history"
+msgstr "ヒストリーから選択したテキスト形式のファイルを結合する"
+
+msgid "Input text files(s)"
+msgstr "テキストファイルを入力する"
+
+msgid "One or more FASTA files"
+msgstr "ひとつまたは複数の FASTA ファイル"
+
+msgid "Just concatenates all the files selected from the given list"
+msgstr "リストから選択された全てのファイルを結合する"
