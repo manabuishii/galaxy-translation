@@ -46,11 +46,22 @@ potfile.write(u'msgid "' + description + u'"\n')
 potfile.write(u'msgstr ""\n')
 
 def write_as_po_file_format_single_line(text):
+    # See also:
+    #  https://docs.galaxyproject.org/en/master/dev/schema.html#tool-help
     # skip empty line
     if len(text) == 0:
         return
     # skip space only line
     if text.isspace():
+        return
+    # skip reStructuredText class
+    if text.startswith('.. class::'):
+        return
+    # skip reStructuredText image
+    if text.startswith('.. image::'):
+        return
+    # skip reStructuredText ----- (horizontal line)
+    if text.startswith('-----'):
         return
     potfile.write(u'\n')
     potfile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
