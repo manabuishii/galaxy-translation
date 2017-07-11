@@ -46,7 +46,11 @@ potfile.write(u'msgid "' + description + u'"\n')
 potfile.write(u'msgstr ""\n')
 
 def write_as_po_file_format_single_line(text):
+    # skip empty line
     if len(text) == 0:
+        return
+    # skip space only line
+    if text.isspace():
         return
     potfile.write(u'\n')
     potfile.write(u'msgid "' + text.encode('utf-8') + u'"\n')
