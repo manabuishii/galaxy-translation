@@ -11,6 +11,11 @@ reload(sys)
 import codecs
 import re
 
+#
+if (len(sys.argv) != 3):
+    print('Usage: # python %s xml_filename output_directory' % sys.argv[0])
+    quit()
+
 # for utf-8
 sys.setdefaultencoding("utf-8")
 
