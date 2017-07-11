@@ -12,18 +12,14 @@ msgstr ""
 msgid "Input text files(s)"
 msgstr ""
 
-msgid "
+msgid "One or more FASTA files"
+msgstr ""
 
-.. class:: infomark
+msgid "Just concatenates all the files selected from the given list"
+msgstr ""
 
-Just concatenates all the files selected from the given list
+msgid "**Tool Author**"
+msgstr ""
 
-------
-
-.. class:: infomark
-
-**Tool Author**
-
-Mando Rodriguez
-    "
+msgid "Mando Rodriguez"
 msgstr ""
