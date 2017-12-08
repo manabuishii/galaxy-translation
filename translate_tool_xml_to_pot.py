@@ -44,6 +44,10 @@ root = tree.getroot()
 potfile.write(u'"Tool-id: ' + root.get('id') + u"\\n\"\n")
 potfile.write(u'"Tool-name: ' + root.get('name') + u"\\n\"\n")
 potfile.write(u'"Tool-version: ' + root.get('version') + u"\\n\"\n")
+#tool name translation
+potfile.write(u'\n')
+potfile.write(u'msgid "' + root.get('name') + u'"\n')
+potfile.write(u'msgstr ""\n')
 # description
 description = root.xpath("description")[0].text
 potfile.write(u'\n')
