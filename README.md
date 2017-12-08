@@ -6,6 +6,7 @@ To translate XML tool in other languages this tool begins by creating a ".pot" f
 A ".pot" (for ".po" template) is a text file with commented information in the beginning and numerous paired lines:
 - first a misguided line who contains the original text
 - second a msgstr line who is empty
+
 After translation (automatically or manually) a ".po" file need to be created with a full ".pot".
 This ".po" is converted to a binary dictionary ".mo" file with the following line:
 
